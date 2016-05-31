@@ -52,7 +52,7 @@ abstract class Controller {
      * @param string $prefix 模板缓存前缀
      * @return void
      */
-    protected function display($templateFile='',$charset='',$contentType='',$content='',$prefix='') {
+    public function display($templateFile='',$charset='',$contentType='',$content='',$prefix='') {
         $this->view->display($templateFile,$charset,$contentType,$content,$prefix);
     }
 
@@ -118,7 +118,7 @@ abstract class Controller {
      * @param mixed $value 变量的值
      * @return Action
      */
-    protected function assign($name,$value='') {
+    public function assign($name,$value='') {
         $this->view->assign($name,$value);
         return $this;
     }
