@@ -1,0 +1,16 @@
+{
+  "name": "403sms",
+  "version": "1.0.0",
+  "description": "403sms npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hao.huang <hao.huang@aliyun.com>",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-react": "^6.5.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  }
+}

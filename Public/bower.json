@@ -1,0 +1,24 @@
+{
+  "name": "403SMS",
+  "homepage": "https://github.com/403studio/403SMS",
+  "authors": [
+    "hao.huang <hao.huang@aliyun.com>"
+  ],
+  "description": "bower packages of 403SMS",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "fontawesome#^4.6.3",
+    "metisMenu": "^2.5.2",
+    "zTree_v3": "https://github.com/zTree/zTree_v3.git#^3.5.23"
+  }
+}

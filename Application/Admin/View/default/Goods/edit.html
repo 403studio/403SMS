@@ -1,0 +1,80 @@
+<include file="Public/header" />
+
+<div id="page-wrapper">
+	<div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header">商品编辑</h1>
+        </div>
+    </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">商品表单</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<form class="form-horizontal" method="post" action="/index.php/Admin/Goods/save">
+								<div class="form-group">
+	    							<label for="barcode" class="col-md-2 control-label">条形码</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.barcode}" class="form-control" id="barcode" name="barcode" placeholder="条形码" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="plucode" class="col-md-2 control-label">PLU码</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.plucode}" class="form-control" id="plucode" name="plucode" placeholder="PLU码" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="category_name" class="col-md-2 control-label">类别名称</label>
+								    <div class="col-md-10">
+								    	<div class="input-group">
+								      		<input type="text" value="{$info.category_name}" class="form-control" id="category_name" name="category_name" placeholder="类别名称" readonly="true" />
+								      		<div class="input-group-addon" onclick="showCategory('Goods', 'edit')">
+								      			<i class="fa fa-search"></i>
+								      		</div>
+								      	</div>
+								      	<input type="hidden" value="{$info.category_id}" id="category_id" name="category_id" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="goods_name" class="col-md-2 control-label">商品名称</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.goods_name}" class="form-control" id="goods_name" name="goods_name" placeholder="商品名称" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="unit" class="col-md-2 control-label">计量单位</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.unit}" class="form-control" id="unit" name="unit" placeholder="计量单位" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="price" class="col-md-2 control-label">参考单价</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.price}" class="form-control" id="price" name="price" placeholder="参考单价" />
+								    </div>
+								</div>
+								<div class="form-group">
+	    							<label for="logo" class="col-md-2 control-label">商品LOGO</label>
+								    <div class="col-md-10">
+								      	<input type="text" value="{$info.logo}" class="form-control" id="logo" name="logo" placeholder="商品Logo" />
+								    </div>
+								</div>
+								<div>
+									<input type="hidden" value="{$info.id}" id="id" name="id" />
+								</div>
+								<div class="text-center">
+									<button type="submit" class="btn btn-primary">保存信息</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<include file="Public/footer" />

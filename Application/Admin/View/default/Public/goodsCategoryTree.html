@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/Public/bower_components/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+<ul id="goods-tree" class="ztree">
+	<li><img src="/Public/image/loading_3.gif" /></li>
+</ul>
+
+<script type="text/javascript" src="/Public/bower_components/zTree_v3/js/jquery.ztree.all.min.js"></script>
+<script type="text/javascript">
+	var setting = {
+		async: {
+			enable: true,
+			dataType: "json",
+			url: "/index.php/Admin/GoodsCategory/getGoodsTree",
+			autoParam: ["id"],
+			otherParam: {"otherParam":"zTreeAsyncTest"},
+		},
+		data: {
+			simpleData: {
+				enable: true
+			}
+		},
+		view: {
+			addHoverDom: addHoverDom,
+			removeHoverDom: removeHoverDom,
+			selectedMulti: false
+		},
+		callback: {
+			onClick: onClickDom,
+		},
+	}
+
+	function onClickDom(event, treeId, treeNode) {
+		var controller_name = $('#controller_name').val();
+		var action_name = $('#action_name').val();
+		/**商品编辑界面处理逻辑**/
+		if (controller_name == 'Goods' && action_name == 'edit') {
+			$('#category_id').val(treeNode.id);
+			$('#category_name').val(treeNode.name);
+			hideCategory(controller_name, action_name);
+		}
+	}
+
+	function addHoverDom(treeId, treeNode) {
+		var sObj = $("#" + treeNode.tId + "_span");
+		if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
+		var addStr = "<span class='fa fa-plus text-success' id='addBtn_" + treeNode.tId
+			+ "' title='新增' onfocus='this.blur();'></span>";
+		var editStr = "<span class='fa fa-edit text-warning' id='editBtn_" + treeNode.tId
+		+ "' title='编辑节点' onfocus='this.blur();'></span>";
+		var delStr = "<span class='fa fa-remove text-danger' id='delBtn_" + treeNode.tId
+		+ "' title='删除节点' onfocus='this.blur();'></span>";
+		sObj.after(delStr);
+		sObj.after(editStr);
+		sObj.after(addStr);
+
+		$("#addBtn_"+treeNode.tId).on("click", function() {
+			createModal('goods-category-form', '新增商品分类');
+			$.ajax({
+		        type: 'POST',
+		        url: '/index.php/Admin/GoodsCategory/createCategory/',
+		        data: 'parent_id='+treeNode.id+'&parent_category_name='+treeNode.name,
+		        success: function(result) {
+		            $('#goods-category-form .modal-body').html(result);
+		        }
+		    });
+		});
+	}
+
+	function removeHoverDom(treeId, treeNode) {
+		$("#addBtn_"+treeNode.tId).unbind().remove();
+		$("#editBtn_"+treeNode.tId).unbind().remove();
+		$("#delBtn_"+treeNode.tId).unbind().remove();
+	};
+
+	$(document).ready(function(){
+		$.fn.zTree.init($("#goods-tree"), setting);
+	});
+
+	 
+</script>

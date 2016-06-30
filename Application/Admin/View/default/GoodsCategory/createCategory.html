@@ -1,0 +1,37 @@
+ <form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-4">上级分类名称</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="parent_category_name" readonly="true" value="{$parent_category_name}" />
+            <input  type="hidden" id="parent_id" value="{$parent_id}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">分类名称</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="category_name" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" onclick="modalFormSave()">保存</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    function modalFormSave() {
+        var parent_id = $("#parent_id").val();
+        var category_name = $("#category_name").val();
+        var data = "parent_id="+parent_id+"&category_name="+category_name;
+        $.ajax({
+            type: "POST",
+            url: "/index.php/Admin/GoodsCategory/saveGoodsCategory",
+            data: data,
+            success: function(msg) {
+                alert(msg);
+            }
+        });
+    }
+</script>
